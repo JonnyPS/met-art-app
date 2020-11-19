@@ -15,6 +15,8 @@ class App extends React	.Component {
 		this.getArtPiece = this.getArtPiece.bind(this);
 	} 
 
+	// add dummy comment
+
 	// on component loading make two fetch requests:
 	// 1. to get the number of objects available to retrieve
 	// 2. retrieve a random item from that objects list

@@ -1,6 +1,8 @@
 import './App.css';
 import React from "react";
 import { ArtPiecePresentation } from "./Components/ArtPiece";
+import { SeeSomethingElseButton } from "./Components/SeeSomethingElseButton";
+import * as S from './Components/styles';
 
 class App extends React	.Component {
 	constructor(props) {
@@ -13,6 +15,7 @@ class App extends React	.Component {
 		}
 		this.getRandomNumber = this.getRandomNumber.bind(this);
 		this.getArtPiece = this.getArtPiece.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	} 
 
 	// add dummy comment
@@ -42,7 +45,7 @@ class App extends React	.Component {
 			// check to see if response has an image attached
 			// if not, run this function again
 			data.primaryImageSmall === "" || data.message === "ObjectID not found" || data.message === "Not a valid object" ? 
-			this.getArtPiece() 
+			this.getArtPiece()
 			:
 			
 			// else stick with this art piece and set state
@@ -60,6 +63,11 @@ class App extends React	.Component {
 		return Math.floor(Math.random() * Math.floor(max -1));
 	}
 
+	handleClick = (e) => {
+		console.log("handleClick")
+		this.getArtPiece();
+	}
+
 	render() {
 		return (
 			<div className="App">
@@ -67,8 +75,15 @@ class App extends React	.Component {
 					this.state.isLoaded === false ?
 					<h1>Loading...</h1>
 					:
+					<>
+					<S.SeeSomethingElseButton onClick={this.handleClick}>
+						See Something Else
+					</S.SeeSomethingElseButton>
 					<ArtPiecePresentation highlight={this.state.artPiece} />
-					
+					<S.MetLink href={this.state.artPiece.objectURL} target="_blank">
+						See it on the Met's website &rarr;
+					</S.MetLink>
+					</>
 				}
 				
 			</div>

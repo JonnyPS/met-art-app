@@ -5,6 +5,7 @@ export const ArtPieceContainer = styled('div')`
 	width: 30%;
 	left: 50%;
 	transform: translate(-50%, 0);
+	margin-bottom: 20px;
 `;
 
 export const ArtPieceName = styled('h1')`

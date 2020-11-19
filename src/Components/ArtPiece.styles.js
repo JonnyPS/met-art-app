@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from "styled-media-query";
 
 export const ArtPieceContainer = styled('div')`
 	position: relative; 
@@ -6,6 +7,10 @@ export const ArtPieceContainer = styled('div')`
 	left: 50%;
 	transform: translate(-50%, 0);
 	margin-bottom: 20px;
+	${media.lessThan("medium")`	    
+	/* screen width is less than 768px (medium) */
+	width: 90%;
+	`}
 `;
 
 export const ArtPieceName = styled('h1')`

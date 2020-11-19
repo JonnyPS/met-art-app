@@ -43,6 +43,8 @@ export const ArtPieceAdditionalImagesImages = styled('img').attrs(() => ({
 	max-width: 20%;
 	margin-top: 10px;
 	margin-right: 10px;
+	width: auto;
+	max-height: 100px;
 	&:nth-child(4) {
 		margin-right: 0;
 	}

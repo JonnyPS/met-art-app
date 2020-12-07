@@ -9,7 +9,8 @@ class App extends React	.Component {
 		super(props);
 		this.state = {
 			isLoaded: false,
-			artPieceRecords: null,
+			lightLoad: false,
+			artPieceRecords: 5000,
 			artPiece: null,
 			artPieceHistory: []
 		}
@@ -25,6 +26,8 @@ class App extends React	.Component {
 	// 2. retrieve a random item from that objects list
 	componentDidMount() {
 		console.log('componentDidMount')
+		this.getArtPiece();
+
 		fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects')
 		.then(response => response.json())
 		.then((data) => {
@@ -32,13 +35,15 @@ class App extends React	.Component {
 			this.setState({
 				artPieceRecords: data.total
 			})
-			this.getArtPiece();
+			// this.getArtPiece();
 		})
 	}
 
 	getArtPiece = () => {
 		// get art piece using url and random number generated
+		console.log('getArtPiece()')
 		console.log(this.getRandomNumber(this.state.artPieceRecords))
+
 		fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects/' + this.getRandomNumber(this.state.artPieceRecords))
 		.then(response => response.json())
 		.then((data) => {
@@ -58,8 +63,6 @@ class App extends React	.Component {
 	}
 
 	getRandomNumber = (max) => {
-		// console.log('getRandomNumber');
-		// console.log(Math.floor(Math.random() * Math.floor(max)));
 		return Math.floor(Math.random() * Math.floor(max -1));
 	}
 

@@ -79,13 +79,13 @@ class App extends React	.Component {
 					<h1>Loading...</h1>
 					:
 					<>
-					<S.SeeSomethingElseButton onClick={this.handleClick}>
-						See Something Else
-					</S.SeeSomethingElseButton>
 					<ArtPiecePresentation highlight={this.state.artPiece} />
 					<S.MetLink href={this.state.artPiece.objectURL} target="_blank">
 						See it on the Met's website &rarr;
 					</S.MetLink>
+					<S.SeeSomethingElseButton onClick={this.handleClick}>
+						See Something Else
+					</S.SeeSomethingElseButton>
 					</>
 				}
 				

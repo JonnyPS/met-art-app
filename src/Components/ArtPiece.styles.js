@@ -3,7 +3,7 @@ import media from "styled-media-query";
 
 export const ArtPieceContainer = styled('div')`
 	position: relative; 
-	width: 30%;
+	width: 20%;
 	left: 50%;
 	transform: translate(-50%, 0);
 	margin-bottom: 20px;

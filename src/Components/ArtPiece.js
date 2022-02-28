@@ -29,7 +29,7 @@ export function ArtPiecePresentation(props) {
 		<S.ArtPieceAdditionalImagesContainer>
 			{console.log('props.additionalImages', props.data.additionalImages)}
 			{ 
-			props.data.additionalImages.length !== null && props.data.additionalImages.length > 0 ?
+			props.data.additionalImages !== undefined && props.data.additionalImages.length > 0 ?
 				//check if there are additional images and if so print them
 				props.data.additionalImages.map((item, index) => {
 					return <S.ArtPieceAdditionalImagesImages 

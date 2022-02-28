@@ -1,14 +1,23 @@
 import './App.css';
-import React, { useEffect } from "react";
-import { ArtPiecePresentation } from "./Components/ArtPiece";
-import { SeeSomethingElseButton } from "./Components/SeeSomethingElseButton";
+import React from "react";
 import { Home } from "./Components/Home";
-
-import * as S from './Components/styles';
 import { 
 	QueryClient,
 	QueryClientProvider 
 } from 'react-query';
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Open-Sans, Helvetica, Sans-Serif;
+  }
+	ul {
+		padding: 0;
+	}
+`;
+ 
 
 // Create a client
 const queryClient = new QueryClient()
@@ -16,6 +25,7 @@ const queryClient = new QueryClient()
 function App() {
 		return (
 			<QueryClientProvider client={queryClient}>
+				<GlobalStyle />
 				<Home />
 			</QueryClientProvider>
 			// <div className="App">

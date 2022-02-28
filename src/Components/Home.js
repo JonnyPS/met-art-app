@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 
 import { ArtPiecePresentation } from './ArtPiece';
+import { AddToFavouritesListButton } from './AddToFavouritiesButton';
+import { FavouritesList } from './FavouritesList';
 
 // let fetchRecords = async () => {
 // 	const res = await fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects');
@@ -20,15 +22,22 @@ export function Home() {
 	const [totalRecords, setTotalRecords] = useState(5000);
 	let {data, status} = useQuery('individualRecord', () => fetchIndividualRecord(getRandomNumber(totalRecords)));
 	const [selectedRecord, setSelectedRecord] = useState(null);
+	const [currentFavourite, setCurrentFavourite] = useState(null);
 
 	useEffect(() => {
 		console.log('useEffect');
 		console.log('data', data)
 		setSelectedRecord(data);
-	}, [status])
+		console.log('selectedRecord', selectedRecord)
+		console.log('currentFavourite', currentFavourite)
+	}, [status, selectedRecord, currentFavourite])
 
 	function getRandomNumber(max) {
 		return Math.floor(Math.random() * Math.floor(max -1));
+	}
+
+	function handleCurrentFavourite(fav) {
+		setCurrentFavourite(fav);
 	}
 	
 
@@ -46,8 +55,9 @@ export function Home() {
 			{ status === 'success' && selectedRecord !== undefined ?
 				<>
 					<p>Success</p>
-					<p>{selectedRecord.title}</p>
+					<FavouritesList id={currentFavourite} />
 					<ArtPiecePresentation data={selectedRecord} />
+					<AddToFavouritesListButton id={selectedRecord.objectID} title={selectedRecord.title} func={ handleCurrentFavourite } />
 				</>
 				: null
 			}

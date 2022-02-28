@@ -10,9 +10,10 @@ export const Container = styled('div')`
 	width: 25%;
 	height: 100%;
 
-	h3 {
+	h3, p {
 		text-align: left;
 	}
+
 `;
 
 export const UL = styled('ul')`

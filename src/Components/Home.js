@@ -19,7 +19,7 @@ let fetchIndividualRecord = async (num) => {
 
 export function Home() {
 	// let {data, status} = useQuery('records', fetchRecords);
-	const [totalRecords, setTotalRecords] = useState(5000);
+	const [totalRecords, setTotalRecords] = useState(50000);
 	let {data, status} = useQuery('individualRecord', () => fetchIndividualRecord(getRandomNumber(totalRecords)));
 	const [selectedRecord, setSelectedRecord] = useState(null);
 	const [currentFavourite, setCurrentFavourite] = useState(null);
@@ -54,7 +54,6 @@ export function Home() {
 			}
 			{ status === 'success' && selectedRecord !== undefined ?
 				<>
-					<p>Success</p>
 					<FavouritesList id={currentFavourite} />
 					<ArtPiecePresentation data={selectedRecord} />
 					<AddToFavouritesListButton id={selectedRecord.objectID} title={selectedRecord.title} func={ handleCurrentFavourite } />

@@ -10,8 +10,13 @@ export function FavouritesList(id) {
 	
 	return (
 		
-			parsed === null ?
-				<p>No favourites</p>
+			parsed == null ?
+			<S.Container>
+				<h3>
+					Favourites list
+				</h3>
+				<p>You currently do not have any favourites saved</p>
+			</S.Container>
 			:
 			<S.Container>
 				<h3>

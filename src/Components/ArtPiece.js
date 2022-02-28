@@ -2,34 +2,36 @@ import React from "react";
 import * as S from './ArtPiece.styles';
 
 export function ArtPiecePresentation(props) {
-	console.log(props)
+	console.log('...........')
+	console.log('props.additionalImages', props.data.additionalImages)
+	console.log('props', props)
 	return (
 		<S.ArtPieceContainer>
 			<S.ArtPieceName> 
-				{props.highlight.objectName}
+				{props.data.objectName}
 			</S.ArtPieceName>
 			<S.ArtPieceDate>
-				{props.highlight.objectDate}
+				{props.data.objectDate}
 			</S.ArtPieceDate>
 			{
-				props.highlight.artistDisplayName ? 
+				props.data.artistDisplayName ? 
 				<S.ArtPieceMainDetails>
-					{props.highlight.artistDisplayName}
+					{props.data.artistDisplayName}
 					<br />
-					{props.highlight.artistDisplayBio}
+					{props.data.artistDisplayBio}
 				</S.ArtPieceMainDetails>
 				:
 				null
 			}
 		<S.ArtPieceContainerImage 
-			src={props.highlight.primaryImageSmall}
+			src={props.data.primaryImageSmall}
 		/>
 		<S.ArtPieceAdditionalImagesContainer>
-			{console.log('props.highlight.additionalImages', props.highlight.additionalImages)}
+			{console.log('props.additionalImages', props.data.additionalImages)}
 			{ 
-			props.highlight.additionalImages.length > 0 ?
+			props.data.additionalImages.length > 0 ?
 				//check if there are additional images and if so print them
-				props.highlight.additionalImages.map((item, index) => {
+				props.data.additionalImages.map((item, index) => {
 					return <S.ArtPieceAdditionalImagesImages 
 						src={item}
 					/>
